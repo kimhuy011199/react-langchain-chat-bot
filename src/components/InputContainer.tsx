@@ -44,7 +44,7 @@ const InputContainer = () => {
         />
         <Button
           onClick={handleSendMessage}
-          className="p-3 h-full text-foreground"
+          className="p-3 h-full text-white"
           disabled={status === StatusState.submitting}
         >
           {status === StatusState.submitting ? (
