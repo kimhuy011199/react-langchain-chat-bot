@@ -47,7 +47,7 @@ const InputContainer = ({
         <Button
           onClick={handleSubmitMessage}
           className="p-3 h-full text-white"
-          disabled={status === StatusState.submitting}
+          disabled={status === StatusState.submitting || !question}
         >
           {status === StatusState.submitting ? (
             <Spinner />

@@ -1,5 +1,7 @@
 import { MessageType } from './enums';
 
+export const API_ENDPOINT = import.meta.env.VITE_LANGCHAIN_API;
+
 export const SUGGESTION_QUESTIONS_LIST = [
   {
     id: 1,
