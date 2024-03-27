@@ -111,3 +111,8 @@
       10014px 0 0 0 var(--dot);
   }
 }
+
+/* Scroll to bottom button */
+.scroll-to-bottom-button {
+  @apply !w-8 !h-8 left-[calc(50%-16px)] !rounded-full !border border-[#ccc] dark:border-[#243c5a] !bg-background hover:!bg-muted after:text-lg after:content-['\2193'];
+}

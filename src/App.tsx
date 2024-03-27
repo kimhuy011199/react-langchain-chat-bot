@@ -22,7 +22,7 @@ const App = () => {
         type: MessageType.question,
       },
     ]);
-    await new Promise((r) => setTimeout(r, 5000));
+    await new Promise((r) => setTimeout(r, 1000));
     setMessages((prev) => [
       ...prev,
       {
