@@ -5,7 +5,11 @@ import { Button } from '@/components/ui/button';
 import { StatusState } from '@/lib/enums';
 import Spinner from './Spinner';
 
-const InputContainer = () => {
+const InputContainer = ({
+  handleSendMessage,
+}: {
+  handleSendMessage: (question: string) => void;
+}) => {
   const [question, setQuestion] = useState('');
   const [status, setStatus] = useState(StatusState.idle);
 
@@ -16,17 +20,17 @@ const InputContainer = () => {
   const handleOnEnter = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      handleSendMessage();
+      handleSubmitMessage();
     } else if (e.key === 'Enter' && e.shiftKey) {
       e.preventDefault();
       setQuestion(question + '\n');
     }
   };
 
-  const handleSendMessage = async () => {
+  const handleSubmitMessage = async () => {
     setStatus(StatusState.submitting);
-    await new Promise((r) => setTimeout(r, 10000));
-    console.log(question);
+    setQuestion('');
+    await handleSendMessage(question);
     setStatus(StatusState.resolved);
   };
 
@@ -43,7 +47,7 @@ const InputContainer = () => {
           className="text-sm block resize-none w-full rounded-md border border-input bg-muted px-3 py-3 ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
         />
         <Button
-          onClick={handleSendMessage}
+          onClick={handleSubmitMessage}
           className="p-3 h-full text-white"
           disabled={status === StatusState.submitting}
         >
