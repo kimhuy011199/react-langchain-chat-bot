@@ -40,7 +40,7 @@ const App = () => {
         <ToggleThemeMode />
       </div>
       {messages.length ? (
-        <MessagesContainer messages={messages} />
+        <MessagesContainer messages={messages} status={status} />
       ) : (
         <IntroContainer handleSendMessage={handleSendMessage} />
       )}

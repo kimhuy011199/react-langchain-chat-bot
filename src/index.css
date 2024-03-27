@@ -33,6 +33,7 @@
     --ring: 214.3 31.8% 91.4%;
 
     --radius: 0.8rem;
+    --dot: #ccc;
   }
 
   .dark {
@@ -63,6 +64,7 @@
     --border: 195 7.69% 20.39%;
     --input: 197.14 9.33% 14.71%;
     --ring: 197.65 14.78% 22.55%;
+    --dot: #ccc;
   }
 }
 
@@ -72,5 +74,40 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Dot typing animation */
+.animate-dot-typing {
+  animation: dot-typing 1.2s infinite linear;
+}
+@keyframes dot-typing {
+  0% {
+    box-shadow: 9984px 0 0 0 var(--dot), 9999px 0 0 0 var(--dot),
+      10014px 0 0 0 var(--dot);
+  }
+  16.667% {
+    box-shadow: 9984px -6px 0 0 var(--dot), 9999px 0 0 0 var(--dot),
+      10014px 0 0 0 var(--dot);
+  }
+  33.333% {
+    box-shadow: 9984px 0 0 0 var(--dot), 9999px 0 0 0 var(--dot),
+      10014px 0 0 0 var(--dot);
+  }
+  50% {
+    box-shadow: 9984px 0 0 0 var(--dot), 9999px -6px 0 0 var(--dot),
+      10014px 0 0 0 var(--dot);
+  }
+  66.667% {
+    box-shadow: 9984px 0 0 0 var(--dot), 9999px 0 0 0 var(--dot),
+      10014px 0 0 0 var(--dot);
+  }
+  83.333% {
+    box-shadow: 9984px 0 0 0 var(--dot), 9999px 0 0 0 var(--dot),
+      10014px -6px 0 0 var(--dot);
+  }
+  100% {
+    box-shadow: 9984px 0 0 0 var(--dot), 9999px 0 0 0 var(--dot),
+      10014px 0 0 0 var(--dot);
   }
 }

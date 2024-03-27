@@ -1,8 +1,15 @@
 import { Message } from '@/lib/interface';
 import MessageItem from './MessageItem';
 import ScrollToBottom from 'react-scroll-to-bottom';
+import { MessageType, StatusState } from '@/lib/enums';
 
-const MessagesContainer = ({ messages }: { messages: Message[] }) => {
+const MessagesContainer = ({
+  messages,
+  status,
+}: {
+  messages: Message[];
+  status: StatusState;
+}) => {
   return (
     <ScrollToBottom className="overflow-y-auto h-[calc(100vh-100px-72px)] my-2">
       <div className="flex flex-col mx-auto w-full max-w-3xl px-4">
@@ -10,6 +17,11 @@ const MessagesContainer = ({ messages }: { messages: Message[] }) => {
           {messages.map((message) => (
             <MessageItem message={message} key={message.id} />
           ))}
+          {status === StatusState.submitting ? (
+            <MessageItem
+              message={{ id: 'loading', content: '', type: MessageType.answer }}
+            />
+          ) : null}
         </ul>
       </div>
     </ScrollToBottom>
