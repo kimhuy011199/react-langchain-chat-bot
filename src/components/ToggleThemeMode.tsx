@@ -12,8 +12,7 @@ const ToggleThemeMode = () => {
   const { setTheme } = useTheme();
 
   return (
-    // <div className="fixed right-4 top-4">
-    <div className="">
+    <div className="fixed right-4 top-3">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="icon">

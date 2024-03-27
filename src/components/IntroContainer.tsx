@@ -7,7 +7,7 @@ const IntroContainer = ({
   handleSendMessage: (question: string) => void;
 }) => {
   return (
-    <div className="flex flex-col gap-12 items-center justify-center mx-auto w-full max-w-3xl px-6">
+    <div className="flex flex-col gap-12 items-center justify-center mx-auto w-full max-w-3xl px-6 mt-40">
       <h2 className="text-2xl font-medium">Ask me anything about LangChain</h2>
       <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 w-full">
         {SUGGESTION_QUESTIONS_LIST.map((item) => (

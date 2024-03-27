@@ -2,10 +2,10 @@ import { useState } from 'react';
 import InputContainer from './components/InputContainer';
 import IntroContainer from './components/IntroContainer';
 import MessagesContainer from './components/MessagesContainer';
-import ToggleThemeMode from './components/ToggleThemeMode';
 import { Message } from './lib/interface';
 import { SAMPLE_MESSAGES } from './lib/contants';
 import { MessageType, StatusState } from './lib/enums';
+import Header from './components/Header';
 
 const App = () => {
   // const [messages, setMessages] = useState<Message[]>(SAMPLE_MESSAGES);
@@ -17,7 +17,7 @@ const App = () => {
     setMessages((prev) => [
       ...prev,
       {
-        id: new Date().toString(),
+        id: new Date().getTime().toString(),
         content: message,
         type: MessageType.question,
       },
@@ -26,7 +26,7 @@ const App = () => {
     setMessages((prev) => [
       ...prev,
       {
-        id: new Date().toString(),
+        id: new Date().getTime().toString(),
         content: message,
         type: MessageType.answer,
       },
@@ -35,15 +35,15 @@ const App = () => {
   };
 
   return (
-    <div className="h-screen w-screen">
-      <div className="py-4">
-        <ToggleThemeMode />
+    <div className="h-screen w-screen overflow-hidden">
+      <Header />
+      <div className="mt-20">
+        {messages.length ? (
+          <MessagesContainer messages={messages} status={status} />
+        ) : (
+          <IntroContainer handleSendMessage={handleSendMessage} />
+        )}
       </div>
-      {messages.length ? (
-        <MessagesContainer messages={messages} status={status} />
-      ) : (
-        <IntroContainer handleSendMessage={handleSendMessage} />
-      )}
       <InputContainer handleSendMessage={handleSendMessage} status={status} />
     </div>
   );

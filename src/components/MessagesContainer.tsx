@@ -11,7 +11,7 @@ const MessagesContainer = ({
   status: StatusState;
 }) => {
   return (
-    <ScrollToBottom className="overflow-y-auto h-[calc(100vh-100px-72px)] my-2">
+    <ScrollToBottom className="overflow-y-auto h-[calc(100vh-100px-72px)]">
       <div className="flex flex-col mx-auto w-full max-w-3xl px-4">
         <ul className="flex flex-col gap-3">
           {messages.map((message) => (
