@@ -7,12 +7,12 @@ import Spinner from './Spinner';
 
 const InputContainer = ({
   handleSendMessage,
+  status,
 }: {
   handleSendMessage: (question: string) => void;
+  status: StatusState;
 }) => {
   const [question, setQuestion] = useState('');
-  const [status, setStatus] = useState(StatusState.idle);
-
   const handleChangeValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setQuestion(e.target.value);
   };
@@ -28,10 +28,8 @@ const InputContainer = ({
   };
 
   const handleSubmitMessage = async () => {
-    setStatus(StatusState.submitting);
     setQuestion('');
     await handleSendMessage(question);
-    setStatus(StatusState.resolved);
   };
 
   return (

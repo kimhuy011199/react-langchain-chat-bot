@@ -5,13 +5,15 @@ import MessagesContainer from './components/MessagesContainer';
 import ToggleThemeMode from './components/ToggleThemeMode';
 import { Message } from './lib/interface';
 import { SAMPLE_MESSAGES } from './lib/contants';
-import { MessageType } from './lib/enums';
+import { MessageType, StatusState } from './lib/enums';
 
 const App = () => {
-  const [messages, setMessages] = useState<Message[]>(SAMPLE_MESSAGES);
-  // const [messages, setMessages] = useState<Message[]>([]);
+  // const [messages, setMessages] = useState<Message[]>(SAMPLE_MESSAGES);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [status, setStatus] = useState(StatusState.idle);
 
   const handleSendMessage = async (message: string) => {
+    setStatus(StatusState.submitting);
     setMessages((prev) => [
       ...prev,
       {
@@ -29,6 +31,7 @@ const App = () => {
         type: MessageType.answer,
       },
     ]);
+    setStatus(StatusState.resolved);
   };
 
   return (
@@ -39,9 +42,9 @@ const App = () => {
       {messages.length ? (
         <MessagesContainer messages={messages} />
       ) : (
-        <IntroContainer />
+        <IntroContainer handleSendMessage={handleSendMessage} />
       )}
-      <InputContainer handleSendMessage={handleSendMessage} />
+      <InputContainer handleSendMessage={handleSendMessage} status={status} />
     </div>
   );
 };
