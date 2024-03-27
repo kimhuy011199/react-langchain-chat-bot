@@ -31,7 +31,7 @@ const InputContainer = () => {
   };
 
   return (
-    <div className="fixed bottom-0 w-screen flex justify-center items-center py-6">
+    <div className="fixed bottom-0 w-screen flex justify-center items-center py-6 ">
       <div className="flex items-end w-full max-w-3xl gap-3 px-4">
         <ReactTextareaAutosize
           maxRows={5}
@@ -40,7 +40,7 @@ const InputContainer = () => {
           onChange={handleChangeValue}
           onKeyDown={handleOnEnter}
           disabled={status === StatusState.submitting}
-          className="block resize-none w-full rounded-md border border-input bg-muted px-3 py-2.5 ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+          className="text-sm block resize-none w-full rounded-md border border-input bg-muted px-3 py-3 ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
         />
         <Button
           onClick={handleSendMessage}

@@ -46,4 +46,28 @@ export const SAMPLE_MESSAGES = [
       'Absolutely. I hold several certifications and qualifications that validate my expertise in web development and related fields. Firstly, I am certified in front-end web development from a recognized institution, where I gained in-depth knowledge of HTML, CSS, and JavaScript fundamentals. This certification demonstrates my proficiency in creating visually appealing and interactive user interfaces.',
     type: MessageType.answer,
   },
+  {
+    id: '5',
+    content:
+      'Could you share any relevant certifications or qualifications that support your expertise as demonstrated in your portfolio?',
+    type: MessageType.question,
+  },
+  {
+    id: '6',
+    content:
+      'Absolutely. I hold several certifications and qualifications that validate my expertise in web development and related fields. Firstly, I am certified in front-end web development from a recognized institution, where I gained in-depth knowledge of HTML, CSS, and JavaScript fundamentals. This certification demonstrates my proficiency in creating visually appealing and interactive user interfaces.',
+    type: MessageType.answer,
+  },
+  {
+    id: '7',
+    content:
+      'Could you share any relevant certifications or qualifications that support your expertise as demonstrated in your portfolio?',
+    type: MessageType.question,
+  },
+  {
+    id: '8',
+    content:
+      'Absolutely. I hold several certifications and qualifications that validate my expertise in web development and related fields. Firstly, I am certified in front-end web development from a recognized institution, where I gained in-depth knowledge of HTML, CSS, and JavaScript fundamentals. This certification demonstrates my proficiency in creating visually appealing and interactive user interfaces.',
+    type: MessageType.answer,
+  },
 ];
