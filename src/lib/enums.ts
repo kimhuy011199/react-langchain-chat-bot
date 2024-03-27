@@ -4,3 +4,8 @@ export enum StatusState {
   resolved,
   rejected,
 }
+
+export enum MessageType {
+  question,
+  answer,
+}
