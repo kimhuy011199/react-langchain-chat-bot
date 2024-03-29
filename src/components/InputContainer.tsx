@@ -42,6 +42,7 @@ const InputContainer = ({
     <div className="fixed bottom-0 w-screen flex justify-center items-center pb-6 pt-4">
       <div className="flex items-end w-full max-w-3xl gap-3 px-4">
         <ReactTextareaAutosize
+          autoFocus
           ref={textareaRef}
           maxRows={5}
           placeholder="Type your message..."

@@ -102,7 +102,7 @@ const App = () => {
       <Header />
       <div className="mt-20">
         {messages.length ? (
-          <MessagesContainer messages={messages} />
+          <MessagesContainer messages={messages} status={status} />
         ) : (
           <IntroContainer handleSendMessage={handleSendMessage} />
         )}
