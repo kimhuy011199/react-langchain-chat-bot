@@ -3,13 +3,16 @@ import MessageItem from './MessageItem';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import { StatusState } from '@/lib/enums';
 import CopyButton from './CopyButton';
+import RegenerateButton from './RegenerateButton';
 
 const MessagesContainer = ({
   messages,
   status,
+  handleRegenerate,
 }: {
   messages: Message[];
   status: StatusState;
+  handleRegenerate: () => void;
 }) => {
   return (
     <ScrollToBottom
@@ -23,8 +26,9 @@ const MessagesContainer = ({
           ))}
         </ul>
         {status === StatusState.resolved ? (
-          <div className="py-2 flex gap-2">
+          <div className="py-3 flex gap-2">
             <CopyButton message={messages[messages.length - 1]} />
+            <RegenerateButton handleRegenerate={handleRegenerate} />
           </div>
         ) : null}
       </div>

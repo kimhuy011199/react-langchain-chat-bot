@@ -86,6 +86,11 @@ const App = () => {
     }
   };
 
+  const handleRegenerate = async () => {
+    const lastQuestion = messages[messages.length - 2];
+    await handleSendMessage(lastQuestion.content);
+  };
+
   const handleAppendErrorMessage = () => {
     setMessages((prev) =>
       prev.map((item, index) =>
@@ -102,7 +107,11 @@ const App = () => {
       <Header />
       <div className="mt-20">
         {messages.length ? (
-          <MessagesContainer messages={messages} status={status} />
+          <MessagesContainer
+            messages={messages}
+            status={status}
+            handleRegenerate={handleRegenerate}
+          />
         ) : (
           <IntroContainer handleSendMessage={handleSendMessage} />
         )}

@@ -1,4 +1,4 @@
-import { useState, KeyboardEvent, useRef } from 'react';
+import { useState, KeyboardEvent, useRef, useEffect } from 'react';
 import { ArrowUp } from 'lucide-react';
 import ReactTextareaAutosize from 'react-textarea-autosize';
 import { Button } from '@/components/ui/button';
@@ -9,7 +9,7 @@ const InputContainer = ({
   handleSendMessage,
   status,
 }: {
-  handleSendMessage: (question: string) => void;
+  handleSendMessage: (question: string) => Promise<void>;
   status: StatusState;
 }) => {
   const [question, setQuestion] = useState('');
@@ -29,14 +29,16 @@ const InputContainer = ({
   };
 
   const handleSubmitMessage = async () => {
+    setQuestion('');
+    await handleSendMessage(question);
+  };
+
+  useEffect(() => {
     if (textareaRef.current) {
-      setQuestion('');
-      textareaRef.current.disabled = true;
-      await handleSendMessage(question);
-      textareaRef.current.disabled = false;
+      textareaRef.current.disabled = status === StatusState.submitting;
       textareaRef.current?.focus();
     }
-  };
+  }, [status]);
 
   return (
     <div className="fixed bottom-0 w-screen flex justify-center items-center pb-6 pt-4">
