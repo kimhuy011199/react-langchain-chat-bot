@@ -32,7 +32,7 @@ const App = () => {
     ]);
 
     // Get answer from langchain
-    handleGetAnswer(message);
+    await handleGetAnswer(message);
   };
 
   const handleGetAnswer = async (question: string) => {

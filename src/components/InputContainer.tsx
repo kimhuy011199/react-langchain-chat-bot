@@ -1,4 +1,4 @@
-import { useState, KeyboardEvent } from 'react';
+import { useState, KeyboardEvent, useRef } from 'react';
 import { ArrowUp } from 'lucide-react';
 import ReactTextareaAutosize from 'react-textarea-autosize';
 import { Button } from '@/components/ui/button';
@@ -13,6 +13,7 @@ const InputContainer = ({
   status: StatusState;
 }) => {
   const [question, setQuestion] = useState('');
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const handleChangeValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setQuestion(e.target.value);
   };
@@ -28,20 +29,25 @@ const InputContainer = ({
   };
 
   const handleSubmitMessage = async () => {
-    setQuestion('');
-    await handleSendMessage(question);
+    if (textareaRef.current) {
+      setQuestion('');
+      textareaRef.current.disabled = true;
+      await handleSendMessage(question);
+      textareaRef.current.disabled = false;
+      textareaRef.current?.focus();
+    }
   };
 
   return (
     <div className="fixed bottom-0 w-screen flex justify-center items-center pb-6 pt-4">
       <div className="flex items-end w-full max-w-3xl gap-3 px-4">
         <ReactTextareaAutosize
+          ref={textareaRef}
           maxRows={5}
           placeholder="Type your message..."
           value={question}
           onChange={handleChangeValue}
           onKeyDown={handleOnEnter}
-          disabled={status === StatusState.submitting}
           className="text-sm block resize-none w-full rounded-md border border-input bg-muted px-3 py-3 ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
         />
         <Button
