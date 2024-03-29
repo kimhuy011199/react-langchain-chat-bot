@@ -5,9 +5,7 @@ import './index.css';
 import { ThemeProvider } from './providers/theme-provider.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <ThemeProvider defaultTheme="dark" storageKey="chat-ui-theme">
-      <App />
-    </ThemeProvider>
-  </React.StrictMode>
+  <ThemeProvider defaultTheme="dark" storageKey="chat-ui-theme">
+    <App />
+  </ThemeProvider>
 );
