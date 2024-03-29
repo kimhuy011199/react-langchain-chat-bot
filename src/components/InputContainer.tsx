@@ -8,9 +8,11 @@ import Spinner from './Spinner';
 const InputContainer = ({
   handleSendMessage,
   status,
+  setInputHeight,
 }: {
   handleSendMessage: (question: string) => Promise<void>;
   status: StatusState;
+  setInputHeight: (height: number) => void;
 }) => {
   const [question, setQuestion] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -33,12 +35,35 @@ const InputContainer = ({
     await handleSendMessage(question);
   };
 
+  // Handle disabled and focus textarea
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.disabled = status === StatusState.submitting;
       textareaRef.current?.focus();
     }
   }, [status]);
+
+  // Handle observe height of textarea
+  useEffect(() => {
+    const observeHeight = () => {
+      if (textareaRef.current) {
+        const observer = new ResizeObserver((entries) => {
+          for (const entry of entries) {
+            if (entry.target === textareaRef.current) {
+              setInputHeight(entry.contentRect.height);
+            }
+          }
+        });
+        observer.observe(textareaRef.current);
+
+        return () => {
+          observer.disconnect();
+        };
+      }
+    };
+
+    observeHeight();
+  }, []);
 
   return (
     <div className="fixed bottom-0 w-screen flex justify-center items-center pb-6 pt-4">

@@ -11,6 +11,7 @@ import { appendQuestionMark, extractDataValue } from './lib/utils';
 const App = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [status, setStatus] = useState(StatusState.idle);
+  const [inputHeight, setInputHeight] = useState(0);
 
   const handleSendMessage = async (message: string) => {
     setStatus(StatusState.submitting);
@@ -111,12 +112,17 @@ const App = () => {
             messages={messages}
             status={status}
             handleRegenerate={handleRegenerate}
+            paddingBottom={inputHeight}
           />
         ) : (
           <IntroContainer handleSendMessage={handleSendMessage} />
         )}
       </div>
-      <InputContainer handleSendMessage={handleSendMessage} status={status} />
+      <InputContainer
+        handleSendMessage={handleSendMessage}
+        status={status}
+        setInputHeight={setInputHeight}
+      />
     </div>
   );
 };
