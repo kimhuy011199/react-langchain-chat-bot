@@ -6,7 +6,11 @@ import Header from './components/Header';
 import { Message } from './lib/interface';
 import { MessageType, StatusState } from './lib/enums';
 import { CHAT_ENDPOINT } from './lib/contants';
-import { appendQuestionMark, extractDataValue } from './lib/utils';
+import {
+  appendQuestionMark,
+  extractDataValue,
+  getHistoryString,
+} from './lib/utils';
 
 const App = () => {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -45,6 +49,7 @@ const App = () => {
         method: 'POST',
         body: JSON.stringify({
           question: appendQuestionMark(question),
+          history: getHistoryString(messages),
         }),
       });
 
