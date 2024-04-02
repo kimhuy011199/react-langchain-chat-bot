@@ -11,9 +11,15 @@ export const appendQuestionMark = (question: string) => {
 };
 
 export const extractDataValue = (chunkString: string) => {
-  const regex = /"data":"(.*?)"/;
-  const match = chunkString.match(regex);
-  return match ? match[1] : '';
+  return chunkString
+    .trim()
+    .split('\n')
+    .map((item) => {
+      const regex = /"data":"(.*?)"/;
+      const match = item.match(regex);
+      return match ? match[1] : '';
+    })
+    .join('');
 };
 
 export const getHistoryString = (messages: Message[]) => {

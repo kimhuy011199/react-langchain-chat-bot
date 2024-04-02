@@ -76,7 +76,7 @@ const App = () => {
             }
             return {
               ...item,
-              content: item.content + dataValue + ' ',
+              content: item.content + dataValue,
             };
           })
         );
