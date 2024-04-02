@@ -4,6 +4,7 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 import { StatusState } from '@/lib/enums';
 import CopyButton from './CopyButton';
 import RegenerateButton from './RegenerateButton';
+import MailButton from './MailButton';
 
 const MessagesContainer = ({
   messages,
@@ -34,6 +35,11 @@ const MessagesContainer = ({
           <div className="py-3 flex gap-2">
             <CopyButton message={messages[messages.length - 1]} />
             <RegenerateButton handleRegenerate={handleRegenerate} />
+          </div>
+        ) : null}
+        {status === StatusState.rejected ? (
+          <div className="py-3 flex gap-2">
+            <MailButton />
           </div>
         ) : null}
       </div>
