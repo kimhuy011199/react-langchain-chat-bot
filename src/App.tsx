@@ -5,7 +5,7 @@ import MessagesContainer from './components/MessagesContainer';
 import Header from './components/Header';
 import { Message } from './lib/interface';
 import { MessageType, StatusState } from './lib/enums';
-import { CHAT_ENDPOINT } from './lib/contants';
+import { CHAT_ENDPOINT, ERROR_ANSWER } from './lib/contants';
 import {
   appendQuestionMark,
   extractDataValue,
@@ -53,8 +53,8 @@ const App = () => {
         }),
       });
 
-      if (!response?.body) {
-        return;
+      if (!response?.body || !response?.ok) {
+        throw response;
       }
 
       const reader = response.body.getReader();
@@ -100,9 +100,7 @@ const App = () => {
   const handleAppendErrorMessage = () => {
     setMessages((prev) =>
       prev.map((item, index) =>
-        index !== prev.length - 1
-          ? item
-          : { ...item, content: 'Something went wrong. Please try again.' }
+        index !== prev.length - 1 ? item : { ...item, content: ERROR_ANSWER }
       )
     );
     setStatus(StatusState.rejected);

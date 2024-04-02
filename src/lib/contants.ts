@@ -2,6 +2,8 @@ import { MessageType } from './enums';
 
 export const CHAT_ENDPOINT = import.meta.env.VITE_LANGCHAIN_CHAT_ENDPOINT;
 
+export const ERROR_ANSWER = `There seems to be an issue with my server at the moment. Please try again later.\nIf you continue to experience difficulties, please contact me at kimhuy011199@gmail.com for further assistance.\nThank you for your patience and understanding.`;
+
 export const SUGGESTION_QUESTIONS_LIST = [
   {
     id: 1,
