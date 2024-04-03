@@ -16,7 +16,7 @@ const MessageItem = ({ message }: { message: Message }) => {
       {message.content ? (
         <span
           dangerouslySetInnerHTML={{
-            __html: message.content.replace(/\\n/g, '<br>'),
+            __html: message.content.replace(/\\n/g, '\n'),
           }}
         ></span>
       ) : (

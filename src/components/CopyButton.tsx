@@ -8,7 +8,7 @@ const CopyButton = ({ message }: { message: Message }) => {
 
   const handleCopy = () => {
     navigator.clipboard
-      .writeText(message.content)
+      .writeText(message.content.replace(/\\n/g, '\n'))
       .then(() => {
         toast({
           description: 'Copied answer to clipboard!',
